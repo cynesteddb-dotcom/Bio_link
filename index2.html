@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Арктида — Истины Свет</title>
+    <style>
+        body {
+            background-color: #121212; /* Темный фон, как на обложке */
+            color: #f1f1f1; /* Светлый текст */
+            font-family: 'Open Sans', sans-serif; /* Чистый шрифт */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden; /* Скрыть полосы прокрутки */
+        }
+
+        .player-container {
+            text-align: center;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        .cover-wrapper {
+            cursor: pointer;
+            border-radius: 12px; /* Уголки */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Тень */
+            overflow: hidden; /* Чтобы изображение не вылезало */
+            position: relative;
+            margin-bottom: 20px;
+            transition: transform 0.2s ease;
+        }
+
+        .cover-wrapper:hover {
+            transform: scale(1.02); /* Легкое увеличение при наведении */
+        }
+
+        .cover-img {
+            width: 100%;
+            display: block;
+        }
+
+        .song-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-top: 0;
+            opacity: 0.9;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        #audio-player {
+            display: none; /* Скрыть стандартный плеер */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="player-container">
+        <div class="cover-wrapper" id="play-pause-btn" title="Нажмите, чтобы включить/выключить музыку">
+            <img src="cover.jpg" alt="Арктида — Истины Свет" class="cover-img">
+        </div>
+        <h1 class="song-title">Арктида истины свет</h1>
+    </div>
+
+    <audio id="audio-player" src="music.mp3" loop></audio>
+
+    <script>
+        const playPauseBtn = document.getElementById('play-pause-btn');
+        const audioPlayer = document.getElementById('audio-player');
+
+        playPauseBtn.addEventListener('click', () => {
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                playPauseBtn.setAttribute('title', 'Нажмите, чтобы выключить музыку');
+            } else {
+                audioPlayer.pause();
+                playPauseBtn.setAttribute('title', 'Нажмите, чтобы включить музыку');
+            }
+        });
+    </script>
+
+</body>
+</html>
